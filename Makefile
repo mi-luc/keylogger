@@ -1,5 +1,17 @@
-obj-m += hello.o
+modname := keylogger
+obj-m := $(modname).o
+
+keylogger-objs := keys.o
+
+KVERSION = $(shell uname -r)
+KDIR := /lib/modules/$(KVERSION)/build
+
+ifdef DEBUG
+CFLAGS_$(obj-m) := -DDEBUG
+endif
+
 all:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) 
-modulesclean:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	make -C $(KDIR) M=$(PWD) modules
+
+clean:
+	make -C $(KDIR) M=$(PWD) clean
