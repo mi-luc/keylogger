@@ -1,5 +1,39 @@
+                                        @@@		                                                    
+                                       @@@                                      
+                                       @@@                                      
+                                       @@@                                      
+                                   @@@@@@@@@@@                                  
+                                   @@      .@@                                  
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ @@                                                                           @@
+ @@  @@@@@@@@   @@@@@@@   @@@@@@@&   @@@@@@@   @@@@@@@/   @@@@@@@@@@@@@@@@@.  @@
+ @@  @@@  @@@   @@   @@   @@@  @@&   @@  *@@   @@@  @@/   @@             @@.  @@
+ @@  @@@@@@@@   @@@@@@@   @@@@@@@&   @@@@@@@   @@@@@@@/   @@@@@@@@@@@@@@@@@.  @@
+ @@                                                                           @@
+ @@  @@@@@@@@   @@@@@@@   @@@@@@@&   @@@@@@@   @@@@@@@/   @@@@@@@   @@@@@@@.  @@
+ @@  @@@  @@@   @@   @@   @@@  @@&   @@  *@@   @@@  @@/   @@  %@@   @@@  @@.  @@
+ @@  @@@@@@@@   @@@@@@@   @@@@@@@&   @@@@@@@   @@@@@@@/   @@@@@@@   @@@  @@.  @@
+ @@                                                                 @@@  @@.  @@
+ @@  @@@@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@                  @@@@@@@   @@@  @@.  @@
+ @@  @@@  @@@   @@                   %@@@@@@@@@@@@@@@     @@  %@@   @@@  @@.  @@
+ @@  @@@@@@@@   @@@@@@@@@@@@@@@@@  @@@     .@       @@@@  @@@@@@@   @@@@@@@.  @@
+ @@                              @@@   @@@@@          (@@,                    @@
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@  @@@  @@@                @@  @@@@@@@@@@@@@@@@@@@@
+                               *@@  @@@                 @@@                     
+                               *@@                  @@  *@@                     
+                                @@/                @@&  @@&                     
+                                 @@@            @@@@   @@@@@@                   
+                                  @@@@       @@@     @@@    @@@@                
+                                     @@@@@@     @@@@@&(@@@@    @@@@@            
+                                          %@@@@@          @@@@,    @@@@         
+                                                             *@@@@    @@@@@     
+                                                                 @@@@(    @@@@  
+                                                                     @@@@   @@@(
+                                                                        @@@@@@  
+
+
 ----------------------------
-## CERINTE KEYLOGGER IN MODUL KERNEL:
+## Cerinte keylogger in modul kernel:
 
 
 1. Scriere **keylogger** in modul kernel.
@@ -18,3 +52,14 @@ ca sa nu facem inca o intrerupere pentru fiecare tasta citita.
 12. Pentru a putea ajunge sa luam tastele, trebuie sa gasim prima data portul tastaturii disponibil in fisierul /proc/ioports
 13. Vom dezvolta un utilitar in care se va incarca un dictionar intr-un arbore de tip p si se vor incerca toate cuvintele
 si in cazul gasirii unor **match-uri** salvam intr-un fisier "match.txt".
+
+
+----------------------------
+
+## Modul de utilizare al keylogger-ului:
+
+# Comenzi compliare si inserare in kernel:
+` make
+  insmod keylogger.ko`
+  
+ 
