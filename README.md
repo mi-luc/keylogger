@@ -24,7 +24,14 @@ si in cazul gasirii unor **match-uri** salvam intr-un fisier "match.txt".
 ----------------------------
 
 # Modul de utilizare al keylogger-ului:
-
+  Matricea us_keymap este folosita pentru a stoca toate caracterele de pe tastatura in mod uppercase sau lowercase
+  Intrucat suntem in modul kernel nu putem folosi functiile POSIX pentru manipularea fisierelor asa ca folosim metodele din modul kernel pentru deschidere fisier, scriere sau inchiderea lui.
+  In functia keycode_to_string translatam scan code -urile citite de la tastatura intr-un caracter propriu-zis ce urmeaza sa fie scris in buffer
+  Toate caracterele sunt scrise intr-un buffer si atunci cand bufferul este plin, continutul este scris in fisierul de output
+  Exista structura spy_blk ...
+  Cu ajutorul arborelui trie verificam daca ceea ce este scris la tastatura reprezinta un cuvant real nu neaparat numai "gunoi" scris de la tastatura in mod random( se va avea grija sa nu reprezinte caractere din cadrul unei parole - ex: Google random passwords)
+  In arbore exista un dictionar de cuvinte cu care va fi verificat ceea ce citeste keyloggerul.
+  
 ## Comenzi compliare si inserare in kernel:
 ` make`
 `insmod keylogger.ko`
