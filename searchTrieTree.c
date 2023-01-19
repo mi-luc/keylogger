@@ -8,6 +8,8 @@ struct trienode {
 	char let;
 	struct trienode** children;
 } trienode;
+
+char buffer[100000];
 void trieInsert(struct trienode* root, char* word)
 {
 	int ok = 0;
@@ -48,10 +50,10 @@ void trieInsert(struct trienode* root, char* word)
 void triePrint(struct trienode* root)
 {
 	if (root->let != '\0') {
-		printf("%c", root->let);
+		//printf("%c", root->let);
 	}
 	if (root->let == '\0') {
-		printf(" ");
+		//printf(" ");
 		return;
 	}
 	for (int i = 0; i < root->num; i++)
@@ -65,26 +67,42 @@ int trieSearch(struct trienode* root, char* word)
 	int ok = 0;
 	for (int i = 0; i < root->num; i++) {
 		if (root->children[i]->let == word[0]) {
-			printf("%c\n",root->let);
+			//printf("%c\n",root->let);
 			trieSearch(root->children[i], word + 1);
 			ok = 1;
 			break;
 		}
 	}
 	if (ok == 0) {
-		printf("%d\n", root->let);
+		//printf("%d\n", root->let);
 		printf("Not found!");
 		return 0;
 	}
 }
-int main()
+
+int main(int argv, char* argc[])
 {
-	struct trienode* root;
+    printf("--------------------------------------------------");
+
+FILE *fp = fopen("victim.txt", "r");
+struct trienode* root;
 	root = (struct trienode*)malloc(sizeof(struct trienode));
 	root->let = '@';
 	root->num = 0;
 	root->children = NULL;
-	FILE* f = fopen("words.in", "r");
+if(fp != NULL)
+{
+    char temp[100];
+    int size=100000;
+   while (!feof(fp)) {                                                                    
+		fgets(buffer,size,fp);
+        strcat(buffer,temp);
+	}
+    fclose(fp);
+}
+printf("%s",buffer);
+	printf("--------------------------------------------------");
+	FILE* f = fopen("dict.txt", "r");
 	char words[100];
 	int i = 0;
 	while (!feof(f)) {
@@ -94,8 +112,9 @@ int main()
 		}
 		trieInsert(root, words);
 	}
-	for (int j = 0; j < 5000; j++) {
-		scanf("%s", words);
+    char*p=strtok(buffer," ");
+	while(1){
+		printf("\n%s\n",p);
 		/*for (int i = 0; i<words[i]; i++) {
 			while (strchr(",.;:[]{}()'*-/", words[i]) != NULL) {
 				if (i == strlen(words))
@@ -107,10 +126,13 @@ int main()
 			}
 			words[i] = tolower(words[i]);
 		}*/
-		if (trieSearch(root, words) == 0)
-			printf("\n***%s***\n", words);
-		else
-			printf("found\n");
+		if (trieSearch(root, p) !=0)
+			//printf("\n***%s***\n", p);
+			printf("found:%s\n",p);
+
+        p=strtok(NULL," ");
+        if(p==NULL)
+        break;
 	}
 	//triePrint(root);
 }
